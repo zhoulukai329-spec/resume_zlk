@@ -16,7 +16,7 @@
 % use fontawesome
 \RequirePackage{fontawesome}
 % use xcolor for customizing color
-%\RequirePackage[usenames,dvipsnames]{xcolor}
+\RequirePackage{xcolor}
 % loading fonts
 \RequirePackage{fontspec}
 % Main document font
@@ -120,3 +120,16 @@
   {\par \textit{#1} ~ #2 \par}
   \vspace{0.85ex}
 }
+
+\definecolor{resumeDividerNeutral}{RGB}{196,200,206}
+
+% Keep project entries visually distinct without overpowering the text.
+\newcommand{\projectdivider}{%
+  \par\vspace{1.1ex}%
+  {\color{resumeDividerNeutral}\hrule height 0.5pt}%
+  \par\vspace{1.6ex}%
+}
+
+\newenvironment{projectitems}
+  {\begin{itemize}[topsep=0.45ex, itemsep=0.35ex, parsep=0.2ex, leftmargin=1.5pc]}
+  {\end{itemize}}

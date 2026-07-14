@@ -8,20 +8,36 @@
 % ctex-xecjk-adobefonts.def: Adobe 的 xeCJK 字体设置，为 Adobe 的四套字体
 % vim:ft=tex
 
-\defaultfontfeatures{Path = fonts/zh_CN-Adobe/, Mapping=tex-text}
+\IfFileExists{fonts/zh_CN-Adobe/AdobeSongStd-Light.otf}{
+  \defaultfontfeatures{Path = fonts/zh_CN-Adobe/, Mapping=tex-text}
 
-\setCJKmainfont[
-BoldFont=AdobeHeitiStd-Regular.otf,
-ItalicFont=AdobeKaitiStd-Regular.otf,
-SmallCapsFont=AdobeHeitiStd-Regular.otf
-]{AdobeSongStd-Light.otf}
-\setCJKsansfont{AdobeHeitiStd-Regular.otf}
-\setCJKmonofont{AdobeFangsongStd-Regular.otf}
+  \setCJKmainfont[
+  BoldFont=AdobeHeitiStd-Regular.otf,
+  ItalicFont=AdobeKaitiStd-Regular.otf,
+  SmallCapsFont=AdobeHeitiStd-Regular.otf
+  ]{AdobeSongStd-Light.otf}
+  \setCJKsansfont{AdobeHeitiStd-Regular.otf}
+  \setCJKmonofont{AdobeFangsongStd-Regular.otf}
 
-\setCJKfamilyfont{zhsong}{AdobeSongStd-Light.otf}
-\setCJKfamilyfont{zhhei}{AdobeHeitiStd-Regular.otf}
-\setCJKfamilyfont{zhfs}{AdobeFangsongStd-Regular.otf}
-\setCJKfamilyfont{zhkai}{AdobeKaitiStd-Regular.otf}
+  \setCJKfamilyfont{zhsong}{AdobeSongStd-Light.otf}
+  \setCJKfamilyfont{zhhei}{AdobeHeitiStd-Regular.otf}
+  \setCJKfamilyfont{zhfs}{AdobeFangsongStd-Regular.otf}
+  \setCJKfamilyfont{zhkai}{AdobeKaitiStd-Regular.otf}
+}{
+  % Fall back to widely available non-variable Windows fonts for stable xdvipdfmx output.
+  \setCJKmainfont[
+  BoldFont=SimHei,
+  ItalicFont=KaiTi,
+  SmallCapsFont=SimHei
+  ]{SimSun}
+  \setCJKsansfont{Microsoft YaHei}
+  \setCJKmonofont{FangSong}
+
+  \setCJKfamilyfont{zhsong}{SimSun}
+  \setCJKfamilyfont{zhhei}{Microsoft YaHei}
+  \setCJKfamilyfont{zhfs}{FangSong}
+  \setCJKfamilyfont{zhkai}{KaiTi}
+}
 
 \newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
 \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
